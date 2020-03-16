@@ -29,6 +29,7 @@
 //                 Jituan Lin <https://github.com/jituanlin>
 //                 Philippe Mills <https://github.com/Philippe-mills>
 //                 Saul Mirone <https://github.com/Saul-Mirone>
+//                 Vitor Luiz Cavalcanti <https://github.com/VitorLuizC>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 3.5
 
@@ -1521,10 +1522,10 @@ export function project<T, U>(props: readonly string[]): (objs: readonly T[]) =>
 /**
  * Returns a function that when supplied an object returns the indicated property of that object, if it exists.
  */
-export function prop<T>(__: Placeholder, obj: T): <P extends keyof T>(p: P) => T[P];
 export function prop<P extends keyof T, T>(p: P, obj: T): T[P];
-export function prop<P extends string>(p: P): <T>(obj: Record<P, T>) => T;
-export function prop<P extends string, T>(p: P): (obj: Record<P, T>) => T;
+export function prop<T>(__: Placeholder, obj: T): <P extends keyof T>(p: P) => T[P];
+export function prop<P extends string>(p: P): <T extends { [_ in P]?: any}>(obj: T) => T[P];
+export function prop<P extends string, T extends { [_ in P]?: any}>(p: P): (obj: T) => T[P];
 
 /**
  * Determines whether the given property of an object has a specific

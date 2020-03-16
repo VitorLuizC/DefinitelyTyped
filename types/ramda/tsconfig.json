@@ -171,6 +171,7 @@
         "test/pick-tests.ts",
         "test/pickAll-tests.ts",
         "test/pickBy-tests.ts",
+        "test/prop-tests.ts",
         "test/propEq-tests.ts"
     ]
 }
